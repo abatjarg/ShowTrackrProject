@@ -9,9 +9,16 @@
 import UIKit
 
 class PopularShowItemCell: UICollectionViewCell {
+    
     static let reuseIdentifer = "popular-show-item-cell-reuse-identifier"
     
-    let featuredPhotoView = UIImageView()
+    var featuredPhotoView: UIImageView = {
+        let fpv = UIImageView()
+        fpv.translatesAutoresizingMaskIntoConstraints = false
+        fpv.layer.cornerRadius = 7
+        fpv.clipsToBounds = true
+        return fpv
+    }()
     
     var contentContainer: UIView = {
         let view = UIView()
@@ -44,19 +51,10 @@ class PopularShowItemCell: UICollectionViewCell {
 
 extension PopularShowItemCell {
     func configure() {
-        contentContainer.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(featuredPhotoView)
         contentView.addSubview(contentContainer)
-        
-        featuredPhotoView.translatesAutoresizingMaskIntoConstraints = false
-//        guard let featuredPhotoURL = self.featuredPhotoURL else { return };
-//        let photo = UIImage(named: featuredPhotoURL)
-//        featuredPhotoView.image = photo
-        featuredPhotoView.layer.cornerRadius = 7
-        featuredPhotoView.clipsToBounds = true
         contentContainer.addSubview(featuredPhotoView)
-
         
         NSLayoutConstraint.activate([
             contentContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

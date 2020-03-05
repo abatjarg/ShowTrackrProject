@@ -9,9 +9,16 @@
 import UIKit
 
 class TopRatedShowItemCell: UICollectionViewCell {
+    
     static let reuseIdentifer = "top-rated-show-item-cell-reuse-identifier"
 
-    let featuredPhotoView = UIImageView()
+    let featuredPhotoView: UIImageView = {
+        let fpv = UIImageView()
+        fpv.translatesAutoresizingMaskIntoConstraints = false
+        fpv.layer.cornerRadius = 7
+        fpv.clipsToBounds = true
+        return fpv
+    }()
 
     var contentContainer: UIView = {
         let view = UIView()
@@ -43,18 +50,11 @@ class TopRatedShowItemCell: UICollectionViewCell {
 }
 
 extension TopRatedShowItemCell {
+    
     func configure() {
-        contentContainer.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(featuredPhotoView)
         contentView.addSubview(contentContainer)
-        
-        featuredPhotoView.translatesAutoresizingMaskIntoConstraints = false
-//        guard let featuredPhotoURL = self.featuredPhotoURL else { return };
-//        let photo = UIImage(named: featuredPhotoURL)
-//        featuredPhotoView.image = photo
-        featuredPhotoView.layer.cornerRadius = 7
-        featuredPhotoView.clipsToBounds = true
         contentContainer.addSubview(featuredPhotoView)
         
         NSLayoutConstraint.activate([

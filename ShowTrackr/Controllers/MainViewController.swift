@@ -57,7 +57,7 @@ extension MainViewController {
         group.enter()
         showService.fetchShows(from: Endpoint.airingToday, params: nil, successHandler: {[unowned self] (response) in
             self.featuredShows = response.results
-            print("\(response.results.count)")
+            print("\(response.results[0].seasons)")
             group.leave()
             }, errorHandler: {[unowned self] (error) in
                 group.leave()
@@ -292,10 +292,12 @@ extension MainViewController: HeaderViewDelegate {
         if sender.tag == 0 {
             let viewAllVC = ViewAllViewController()
             viewAllVC.navigationItem.title = "Airing Today"
+            viewAllVC.shows = featuredShows
             navigationController?.pushViewController(viewAllVC, animated: true)
         } else {
             let viewAllVC = ViewAllViewController()
             viewAllVC.navigationItem.title = "Popular"
+            viewAllVC.shows = popularShows
             navigationController?.pushViewController(viewAllVC, animated: true)
         }
     }

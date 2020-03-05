@@ -37,6 +37,16 @@ class HeaderView: UICollectionReusableView {
         seperator.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
         return seperator
     }()
+    
+    let stackView: UIStackView = {
+        let sv = UIStackView()
+        sv.axis = .horizontal
+        sv.alignment = .fill
+        sv.spacing = 0
+        sv.distribution = .fillEqually
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        return sv
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,13 +69,6 @@ class HeaderView: UICollectionReusableView {
 extension HeaderView {
     func configure() {
         backgroundColor = .systemBackground
-        
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.spacing = 0
-        stackView.distribution = .fillEqually
-        stackView.translatesAutoresizingMaskIntoConstraints = false
 
         stackView.addArrangedSubview(sectionLabel)
         stackView.addArrangedSubview(viewAllButton)

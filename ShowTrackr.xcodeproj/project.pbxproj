@@ -36,6 +36,7 @@
 		4DBDDC1B240F5A9D00542046 /* ShowDetailSeasonCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC1A240F5A9D00542046 /* ShowDetailSeasonCollectionView.swift */; };
 		4DBDDC1D240F5AFC00542046 /* ShowDetailSeasonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC1C240F5AFC00542046 /* ShowDetailSeasonCollectionViewCell.swift */; };
 		4DBDDC1F2410B82900542046 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC1E2410B82900542046 /* SearchCollectionViewCell.swift */; };
+		4DBDDC2124120C4600542046 /* RelatedShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC2024120C4600542046 /* RelatedShowViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		4DBDDC1A240F5A9D00542046 /* ShowDetailSeasonCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailSeasonCollectionView.swift; sourceTree = "<group>"; };
 		4DBDDC1C240F5AFC00542046 /* ShowDetailSeasonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailSeasonCollectionViewCell.swift; sourceTree = "<group>"; };
 		4DBDDC1E2410B82900542046 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		4DBDDC2024120C4600542046 /* RelatedShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedShowViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				4D29AAF7240B751D00028B8F /* MainViewController.swift */,
 				4DBDDC0C240C866400542046 /* ViewAllViewController.swift */,
 				4DBDDC0E240C882100542046 /* SavedShowsViewController.swift */,
+				4DBDDC2024120C4600542046 /* RelatedShowViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				4DBDDC1B240F5A9D00542046 /* ShowDetailSeasonCollectionView.swift in Sources */,
 				4DBDDC0B240C58AA00542046 /* SearchViewController.swift in Sources */,
 				4D29AB11240C344B00028B8F /* HeaderView.swift in Sources */,
+				4DBDDC2124120C4600542046 /* RelatedShowViewController.swift in Sources */,
 				4D29AB05240C33FF00028B8F /* ShowService.swift in Sources */,
 				4D29AB06240C33FF00028B8F /* ShowItem.swift in Sources */,
 				4D29AACF240B74CC00028B8F /* ShowTrackr.xcdatamodeld in Sources */,

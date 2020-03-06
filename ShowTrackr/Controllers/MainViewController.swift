@@ -8,8 +8,46 @@
 
 import UIKit
 import Kingfisher
+import SystemConfiguration
 
 class MainViewController: UIViewController {
+    
+    private var reachibility = SCNetworkReachabilityCreateWithName(nil, "https://api.themoviedb.org/")
+    
+    private func checkReachibility() {
+        var flags = SCNetworkReachabilityFlags()
+        
+        SCNetworkReachabilityGetFlags(self.reachibility!, &flags)
+        
+        if(isNetworkReach(with: flags)) {
+            print(flags)
+            if flags.contains(.isWWAN) {
+                let alert = UIAlertController(title: "Reachable", message: "via mobile", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Close", style: .cancel))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Reachable", message: "via wifi", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Close", style: .cancel))
+                self.present(alert, animated: true, completion: nil)
+            }
+        } else if (!isNetworkReach(with: flags)) {
+            print(flags)
+            let alert = UIAlertController(title: "Not reachable", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .cancel))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func isNetworkReach(with flags: SCNetworkReachabilityFlags) -> Bool {
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)
+        let canConnectWithoutUserInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
+        
+        return isReachable && (!needsConnection || canConnectWithoutUserInteraction)
+    }
+    
+    
     
     var endpoint: Endpoint?
     let showService: ShowService = ShowItemStore.shared
@@ -33,6 +71,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "ShowTrackr"
+        checkReachibility()
         configureCollectionView()
         fetchShows()
     }

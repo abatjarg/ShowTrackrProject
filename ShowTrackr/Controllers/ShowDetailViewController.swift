@@ -26,6 +26,7 @@ class ShowDetailViewController: UIViewController {
         sdcv.translatesAutoresizingMaskIntoConstraints = false
         sdcv.register(ShowDetailHeaderView.self, forSupplementaryViewOfKind: ShowDetailViewController.sectionHeaderElementKind, withReuseIdentifier: ShowDetailHeaderView.reuseIdentifier)
         sdcv.register(ShowDetailSeasonCollectionView.self, forCellWithReuseIdentifier: ShowDetailSeasonCollectionView.showDetailSeasonCellId)
+        sdcv.register(ShowDetailTrailerCollectionView.self, forCellWithReuseIdentifier: ShowDetailTrailerCollectionView.showDetailTrailerCellId)
         sdcv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         sdcv.backgroundColor = .white
         return sdcv
@@ -81,6 +82,12 @@ extension ShowDetailViewController: UICollectionViewDataSource, UICollectionView
             cell.seasons = self.seasons
             //print("\(self.seasons)")
             return cell
+        } else if indexPath.row == 1 {
+            let cell = showDetailCollectionView.dequeueReusableCell(withReuseIdentifier: ShowDetailTrailerCollectionView.showDetailTrailerCellId, for: indexPath) as! ShowDetailTrailerCollectionView
+            cell.backgroundColor = .white
+            cell.showId = item!.id
+            //print("\(self.seasons)")
+            return cell
         } else {
             let cell = showDetailCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
             cell.backgroundColor = .white
@@ -97,6 +104,8 @@ extension ShowDetailViewController: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0 {
+            return .init(width: view.frame.width, height: 400)
+        } else if indexPath.row == 1 {
             return .init(width: view.frame.width, height: 400)
         } else {
             return .init(width: view.frame.width, height: 200)

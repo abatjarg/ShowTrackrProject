@@ -83,6 +83,10 @@ public struct ShowItem: Hashable, Codable {
             }
             return URL(string: "https://www.youtube.com/watch?v=\(key)")
         }
+        
+        public var thumbnailUrl: URL? {
+            return URL(string: "https://i.ytimg.com/vi/\(key)/maxresdefault.jpg")
+        }
     }
     
 }

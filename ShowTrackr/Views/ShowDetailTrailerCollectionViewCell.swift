@@ -12,6 +12,8 @@ class ShowDetailTrailerCollectionViewCell: UICollectionViewCell {
     
     static let showDetailSeasonCellId = "show-detail-trailer-cell-id"
     
+    var videoUrl: URL?
+    
     var container: UIView = {
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -52,14 +54,27 @@ class ShowDetailTrailerCollectionViewCell: UICollectionViewCell {
         return ovt
     }()
     
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        
+        UIApplication.shared.open(videoUrl!, options: [:], completionHandler: nil)
+
+        print("Pressed")
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(container)
         container.addSubview(imageContainer)
+        imageContainer.addSubview(featuredPhotoView)
         container.addSubview(titleLabel)
         container.addSubview(overViewText)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        featuredPhotoView.isUserInteractionEnabled = true
+        featuredPhotoView.addGestureRecognizer(tapGestureRecognizer)
         
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: topAnchor, constant: 20),
@@ -80,7 +95,12 @@ class ShowDetailTrailerCollectionViewCell: UICollectionViewCell {
             overViewText.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             overViewText.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             overViewText.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            overViewText.bottomAnchor.constraint(equalTo: container.bottomAnchor)
+            overViewText.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            
+            featuredPhotoView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
+            featuredPhotoView.leadingAnchor.constraint(equalTo: imageContainer.leadingAnchor),
+            featuredPhotoView.trailingAnchor.constraint(equalTo: imageContainer.trailingAnchor),
+            featuredPhotoView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor)
         ])
     }
     

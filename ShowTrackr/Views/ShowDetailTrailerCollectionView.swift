@@ -9,6 +9,7 @@
 import UIKit
 
 import UIKit
+import Kingfisher
 
 class ShowDetailTrailerCollectionView: UICollectionViewCell {
     
@@ -73,8 +74,8 @@ extension ShowDetailTrailerCollectionView: UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = trailerCollectionView.dequeueReusableCell(withReuseIdentifier: ShowDetailTrailerCollectionViewCell.showDetailSeasonCellId, for: indexPath) as! ShowDetailTrailerCollectionViewCell
-        print("\(trailers[indexPath.row].thumbnailUrl)")
         cell.featuredPhotoView.kf.setImage(with: trailers[indexPath.row].thumbnailUrl)
+        cell.videoUrl = trailers[indexPath.row].youtubeURL
         return cell
     }
     

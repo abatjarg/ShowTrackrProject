@@ -85,7 +85,7 @@ public struct ShowItem: Hashable, Codable {
         }
         
         public var thumbnailUrl: URL? {
-            return URL(string: "https://i.ytimg.com/vi/\(key)/maxresdefault.jpg")
+            return URL(string: "http://img.youtube.com/vi/\(key)/0.jpg")
         }
     }
     

@@ -107,6 +107,41 @@ class ShowItemStore: ShowService {
     
     }
     
+    public func fetchTrailers(id: Int, successHandler: @escaping (_ response: ShowItem.ShowVideoResponse) -> Void, errorHandler: @escaping(_ error: Error) -> Void) {
+        guard let url = URL(string: "\(baseAPIURL)/tv/\(id)/videos?api_key=\(apiKey)&language=en-US&page=1") else {
+            handleError(errorHandler: errorHandler, error: ShowError.invalidEndpoint)
+            return
+        }
+    
+        urlSession.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                self.handleError(errorHandler: errorHandler, error: ShowError.apiError)
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
+                self.handleError(errorHandler: errorHandler, error: ShowError.invalidResponse)
+
+                return
+            }
+            
+            guard let data = data else {
+                self.handleError(errorHandler: errorHandler, error: ShowError.noData)
+                return
+            }
+            
+            do {
+                let movie = try self.jsonDecoder.decode(ShowItem.ShowVideoResponse.self, from: data)
+                DispatchQueue.main.async {
+                    successHandler(movie)
+                }
+            } catch {
+                self.handleError(errorHandler: errorHandler, error: ShowError.serializationError)
+            }
+        }.resume()
+    
+    }
+    
     public func fetchShow(id: Int, successHandler: @escaping (_ response: ShowItem) -> Void, errorHandler: @escaping(_ error: Error) -> Void) {
         guard let url = URL(string: "\(baseAPIURL)/tv/\(id)?api_key=\(apiKey)&append_to_response=videos,credits") else {
             handleError(errorHandler: errorHandler, error: ShowError.invalidEndpoint)

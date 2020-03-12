@@ -39,6 +39,8 @@
 		4DBDDC2124120C4600542046 /* RelatedShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC2024120C4600542046 /* RelatedShowViewController.swift */; };
 		4DBDDC232415551C00542046 /* ShowDetailTrailerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC222415551C00542046 /* ShowDetailTrailerCollectionView.swift */; };
 		4DBDDC252415676700542046 /* ShowDetailTrailerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC242415676700542046 /* ShowDetailTrailerCollectionViewCell.swift */; };
+		4DBDDC27241748E700542046 /* ShowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC26241748E700542046 /* ShowImageView.swift */; };
+		4DBDDC292418A2B800542046 /* ShowDetailFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC282418A2B800542046 /* ShowDetailFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		4DBDDC2024120C4600542046 /* RelatedShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedShowViewController.swift; sourceTree = "<group>"; };
 		4DBDDC222415551C00542046 /* ShowDetailTrailerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailTrailerCollectionView.swift; sourceTree = "<group>"; };
 		4DBDDC242415676700542046 /* ShowDetailTrailerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailTrailerCollectionViewCell.swift; sourceTree = "<group>"; };
+		4DBDDC26241748E700542046 /* ShowImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImageView.swift; sourceTree = "<group>"; };
+		4DBDDC282418A2B800542046 /* ShowDetailFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailFooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +230,7 @@
 				4D29AB09240C344B00028B8F /* FeaturedShowItemCell.swift */,
 				4D29AB0A240C344B00028B8F /* HeaderView.swift */,
 				4DBDDC16240E229700542046 /* ShowDetailHeaderView.swift */,
+				4DBDDC282418A2B800542046 /* ShowDetailFooterView.swift */,
 				4D29AB0F240C344B00028B8F /* MainItemCell.swift */,
 				4D29AB0B240C344B00028B8F /* PopularShowItemCell.swift */,
 				4D29AB0C240C344B00028B8F /* TopRatedShowItemsCell.swift */,
@@ -235,6 +240,7 @@
 				4DBDDC1E2410B82900542046 /* SearchCollectionViewCell.swift */,
 				4DBDDC222415551C00542046 /* ShowDetailTrailerCollectionView.swift */,
 				4DBDDC242415676700542046 /* ShowDetailTrailerCollectionViewCell.swift */,
+				4DBDDC26241748E700542046 /* ShowImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 				4DBDDC17240E229700542046 /* ShowDetailHeaderView.swift in Sources */,
 				4D29AAC5240B74CC00028B8F /* AppDelegate.swift in Sources */,
 				4D29AB18240C34CE00028B8F /* CustomTabBarController.swift in Sources */,
+				4DBDDC27241748E700542046 /* ShowImageView.swift in Sources */,
 				4DBDDC232415551C00542046 /* ShowDetailTrailerCollectionView.swift in Sources */,
 				4D29AAC7240B74CC00028B8F /* SceneDelegate.swift in Sources */,
 				4DBDDC15240E048300542046 /* ViewAllCollectionViewCell.swift in Sources */,
@@ -402,6 +409,7 @@
 				4D29AB06240C33FF00028B8F /* ShowItem.swift in Sources */,
 				4D29AACF240B74CC00028B8F /* ShowTrackr.xcdatamodeld in Sources */,
 				4D29AAF8240B751D00028B8F /* MainViewController.swift in Sources */,
+				4DBDDC292418A2B800542046 /* ShowDetailFooterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

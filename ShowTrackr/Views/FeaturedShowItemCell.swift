@@ -90,10 +90,9 @@ extension FeaturedMovieItemCell {
         titleLabel.text = title
         genreLabel.text = genre
     
-        contentView.addSubview(container)
-        contentView.addSubview(featuredPhotoView)
         contentView.addSubview(contentContainer)
-        contentContainer.addSubview(featuredPhotoView)
+        contentView.addSubview(container)
+        container.addSubview(featuredPhotoView)
         contentContainer.addSubview(titleLabel)
         contentContainer.addSubview(genreLabel)
 

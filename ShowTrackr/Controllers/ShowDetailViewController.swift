@@ -19,12 +19,14 @@ class ShowDetailViewController: UIViewController {
     var shows = [ShowItem]()
     
     static let sectionHeaderElementKind = "show-detail-section-header-element-kind"
+    static let sectionFooterElementKind = "show-detail-section-footer-element-kind"
     
     let showDetailCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let sdcv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         sdcv.translatesAutoresizingMaskIntoConstraints = false
         sdcv.register(ShowDetailHeaderView.self, forSupplementaryViewOfKind: ShowDetailViewController.sectionHeaderElementKind, withReuseIdentifier: ShowDetailHeaderView.reuseIdentifier)
+        sdcv.register(ShowDetailFooterView.self, forSupplementaryViewOfKind: ShowDetailViewController.sectionFooterElementKind, withReuseIdentifier: ShowDetailFooterView.reuseIdentifier)
         sdcv.register(ShowDetailSeasonCollectionView.self, forCellWithReuseIdentifier: ShowDetailSeasonCollectionView.showDetailSeasonCellId)
         sdcv.register(ShowDetailTrailerCollectionView.self, forCellWithReuseIdentifier: ShowDetailTrailerCollectionView.showDetailTrailerCellId)
         sdcv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
@@ -72,7 +74,7 @@ class ShowDetailViewController: UIViewController {
 
 extension ShowDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -96,11 +98,21 @@ extension ShowDetailViewController: UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = showDetailCollectionView.dequeueReusableSupplementaryView(ofKind: ShowDetailViewController.sectionHeaderElementKind, withReuseIdentifier: ShowDetailHeaderView.reuseIdentifier, for: indexPath) as! ShowDetailHeaderView
-        header.featuredPhotoView.kf.setImage(with: item?.posterURL)
-        header.overViewText.text = item?.overview
-        return header
+        
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let header = showDetailCollectionView.dequeueReusableSupplementaryView(ofKind: ShowDetailViewController.sectionHeaderElementKind, withReuseIdentifier: ShowDetailHeaderView.reuseIdentifier, for: indexPath) as! ShowDetailHeaderView
+            header.featuredPhotoView.kf.setImage(with: item?.posterURL)
+            header.overViewText.text = item?.overview
+            return header
+        case UICollectionView.elementKindSectionFooter:
+            let footer = showDetailCollectionView.dequeueReusableSupplementaryView(ofKind: ShowDetailViewController.sectionFooterElementKind, withReuseIdentifier: ShowDetailFooterView.reuseIdentifier, for: indexPath) as! ShowDetailFooterView
+            return footer
+        default:
+            assert(false, "Unexpected element kind")
+        }
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 0 {
@@ -114,5 +126,9 @@ extension ShowDetailViewController: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return .init(width: view.frame.width, height: 250)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return .init(width: view.frame.width, height: 500)
     }
 }

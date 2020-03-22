@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ShowDetailViewController: UIViewController {
     
@@ -41,6 +42,7 @@ class ShowDetailViewController: UIViewController {
         view.backgroundColor = .white
         
         navigationItem.title = item?.name
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBarButtonPressed))
         
         view.addSubview(showDetailCollectionView)
         
@@ -67,6 +69,30 @@ class ShowDetailViewController: UIViewController {
             self.showDetailCollectionView.reloadData()
         }) { (error) in
             print("\(error)")
+        }
+    }
+    
+    @objc func addBarButtonPressed() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Show", in: managedContext)!
+        let show = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        show.setValue(item?.id, forKey: "id")
+
+        do {
+            try managedContext.save()
+            let alertDisapperTimeInSeconds = 2.0
+            let alert = UIAlertController(title: nil, message: "Show has been saved", preferredStyle: .actionSheet)
+            self.present(alert, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + alertDisapperTimeInSeconds) {
+              alert.dismiss(animated: true)
+            }
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
         }
     }
 

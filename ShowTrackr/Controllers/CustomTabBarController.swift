@@ -21,7 +21,11 @@ class CustomTabBarController: UITabBarController {
         let searchNavController = UINavigationController(rootViewController: searchViewController)
         searchNavController.tabBarItem.title = "Search"
         
-        viewControllers = [mainNavController, searchNavController]
+        let savedShowsViewController = SavedShowsViewController()
+        let savedShowsNavController = UINavigationController(rootViewController: savedShowsViewController)
+        savedShowsNavController.tabBarItem.title = "Saved Shows"
+        
+        viewControllers = [mainNavController, searchNavController, savedShowsNavController]
     }
 
 }

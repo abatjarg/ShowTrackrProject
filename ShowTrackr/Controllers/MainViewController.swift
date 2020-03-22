@@ -71,7 +71,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "ShowTrackr"
-        checkReachibility()
+        //checkReachibility()
         configureCollectionView()
         fetchShows()
     }

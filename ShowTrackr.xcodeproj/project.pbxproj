@@ -41,6 +41,7 @@
 		4DBDDC252415676700542046 /* ShowDetailTrailerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC242415676700542046 /* ShowDetailTrailerCollectionViewCell.swift */; };
 		4DBDDC27241748E700542046 /* ShowImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC26241748E700542046 /* ShowImageView.swift */; };
 		4DBDDC292418A2B800542046 /* ShowDetailFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC282418A2B800542046 /* ShowDetailFooterView.swift */; };
+		4DBDDE352427C6F700542046 /* SavedShowsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDE342427C6F700542046 /* SavedShowsCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		4DBDDC242415676700542046 /* ShowDetailTrailerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailTrailerCollectionViewCell.swift; sourceTree = "<group>"; };
 		4DBDDC26241748E700542046 /* ShowImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImageView.swift; sourceTree = "<group>"; };
 		4DBDDC282418A2B800542046 /* ShowDetailFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailFooterView.swift; sourceTree = "<group>"; };
+		4DBDDE342427C6F700542046 /* SavedShowsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedShowsCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 				4DBDDC222415551C00542046 /* ShowDetailTrailerCollectionView.swift */,
 				4DBDDC242415676700542046 /* ShowDetailTrailerCollectionViewCell.swift */,
 				4DBDDC26241748E700542046 /* ShowImageView.swift */,
+				4DBDDE342427C6F700542046 /* SavedShowsCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				4D29AB10240C344B00028B8F /* FeaturedShowItemCell.swift in Sources */,
 				4DBDDC17240E229700542046 /* ShowDetailHeaderView.swift in Sources */,
 				4D29AAC5240B74CC00028B8F /* AppDelegate.swift in Sources */,
+				4DBDDE352427C6F700542046 /* SavedShowsCollectionViewCell.swift in Sources */,
 				4D29AB18240C34CE00028B8F /* CustomTabBarController.swift in Sources */,
 				4DBDDC27241748E700542046 /* ShowImageView.swift in Sources */,
 				4DBDDC232415551C00542046 /* ShowDetailTrailerCollectionView.swift in Sources */,

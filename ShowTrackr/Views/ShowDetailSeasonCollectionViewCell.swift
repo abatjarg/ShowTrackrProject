@@ -58,6 +58,7 @@ class ShowDetailSeasonCollectionViewCell: UICollectionViewCell {
         
         addSubview(container)
         container.addSubview(imageContainer)
+        imageContainer.addSubview(featuredPhotoView)
         container.addSubview(titleLabel)
         container.addSubview(overViewText)
         
@@ -71,6 +72,11 @@ class ShowDetailSeasonCollectionViewCell: UICollectionViewCell {
             imageContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             imageContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             imageContainer.heightAnchor.constraint(equalToConstant: 200),
+            
+            featuredPhotoView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
+            featuredPhotoView.leadingAnchor.constraint(equalTo: imageContainer.leadingAnchor),
+            featuredPhotoView.trailingAnchor.constraint(equalTo: imageContainer.trailingAnchor),
+            featuredPhotoView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
             
             titleLabel.topAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: 20),
             titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),

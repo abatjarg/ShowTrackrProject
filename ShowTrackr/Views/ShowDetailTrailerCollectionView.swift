@@ -30,6 +30,7 @@ class ShowDetailTrailerCollectionView: UICollectionViewCell {
         layout.scrollDirection = .horizontal
         let scv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         scv.translatesAutoresizingMaskIntoConstraints = false
+        scv.showsHorizontalScrollIndicator = false
         scv.backgroundColor = .white
         scv.register(ShowDetailTrailerCollectionViewCell.self, forCellWithReuseIdentifier: ShowDetailTrailerCollectionViewCell.showDetailSeasonCellId)
         return scv
@@ -37,7 +38,6 @@ class ShowDetailTrailerCollectionView: UICollectionViewCell {
     
     func fetchTrailers() {
         showService.fetchTrailers(id: showId, successHandler: { (response) in
-            print("\(response)")
             self.trailers = response.results
             self.trailerCollectionView.reloadData()
         }) { (error) in
@@ -80,7 +80,7 @@ extension ShowDetailTrailerCollectionView: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: frame.width - 50, height: 400)
+        return .init(width: frame.width - 50, height: 200)
     }
     
 }

@@ -34,6 +34,8 @@ class SavedShowsViewController: UIViewController {
         
         navigationItem.title = "Saved shows"
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         savedShowsCollectionView.delegate = self
         savedShowsCollectionView.dataSource = self
         
@@ -43,10 +45,6 @@ class SavedShowsViewController: UIViewController {
             savedShowsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             savedShowsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,8 +75,6 @@ extension SavedShowsViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = savedShowsCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SavedShowsCollectionViewCell
         
-        print(shows[indexPath.row].value(forKey: "id") as! Int)
-        
         showService.fetchShow(id: shows[indexPath.row].value(forKey: "id") as! Int, successHandler: { (response) in
             cell.titleLabel.text = response.name
             cell.featuredPhotoView.kf.setImage(with: response.backdropURL)
@@ -94,5 +90,11 @@ extension SavedShowsViewController: UICollectionViewDelegate, UICollectionViewDa
         return .init(width: view.frame.width, height: 280)
     }
     
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        //guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+//        let showDetailVC = ShowDetailViewController()
+//        showDetailVC.item = item
+//        navigationController?.pushViewController(showDetailVC, animated: true)
+//    }
     
 }

@@ -11,8 +11,9 @@ import Foundation
 protocol ShowService {
     func fetchShows(from endpoint: Endpoint, params: [String: String]?, successHandler: @escaping (_ response: ShowsItemResponse) -> Void, errorHandler: @escaping(_ error: Error) -> Void)
     func fetchShow(id: Int, successHandler: @escaping (_ response: ShowItem) -> Void, errorHandler: @escaping(_ error: Error) -> Void)
-    func fetchRelated(id: Int, successHandler: @escaping (_ response: ShowItem) -> Void, errorHandler: @escaping(_ error: Error) -> Void)
-    func fetchTrailers(id: Int, successHandler: @escaping (_ response: ShowItem.ShowVideoResponse) -> Void, errorHandler: @escaping(_ error: Error) -> Void) 
+    func fetchRelated(id: Int, successHandler: @escaping (_ response: ShowsItemResponse) -> Void, errorHandler: @escaping(_ error: Error) -> Void)
+    func fetchTrailers(id: Int, successHandler: @escaping (_ response: ShowItem.ShowVideoResponse) -> Void, errorHandler: @escaping(_ error: Error) -> Void)
+    func fetchCast(id: Int, successHandler: @escaping (_ response: ShowItem.ShowCreditResponse) -> Void, errorHandler: @escaping(_ error: Error) -> Void) 
     func searchShows(query: String, params: [String: String]?, successHandler: @escaping (_ response: ShowsItemResponse) -> Void, errorHandler: @escaping(_ error: Error) -> Void)
 }
 

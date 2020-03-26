@@ -23,6 +23,7 @@ public struct ShowItem: Hashable, Codable {
     public let overview: String
     public let genres: [ShowGenre]?
     public let seasons: [ShowSeason]?
+    public let casts: [ShowCast]?
     
     public func hash(into hasher: inout Hasher) {
       hasher.combine(identifier)
@@ -65,8 +66,28 @@ public struct ShowItem: Hashable, Codable {
         }
     }
     
+    public struct ShowCast: Codable {
+        public let character: String
+        public let name: String
+
+        public let profilePath: String?
+        
+        public var profileURL: URL? {
+            guard let profilePath = profilePath else {
+                return nil
+            }
+            
+            return URL(string: "https://image.tmdb.org/t/p/w500\(profilePath)")!
+        }
+        
+    }
+    
     public struct ShowVideoResponse: Codable {
         public let results: [ShowVideo]
+    }
+    
+    public struct ShowCreditResponse: Codable {
+        public let cast: [ShowCast]
     }
 
     public struct ShowVideo: Codable {

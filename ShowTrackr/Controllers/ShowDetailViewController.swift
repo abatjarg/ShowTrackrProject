@@ -14,6 +14,7 @@ class ShowDetailViewController: UIViewController {
     var item: ShowItem?
     
     var seasons = [ShowItem.ShowSeason]()
+    var casts = [ShowItem.ShowCast]()
     
     var endpoint: Endpoint?
     let showService: ShowService = ShowItemStore.shared
@@ -30,6 +31,8 @@ class ShowDetailViewController: UIViewController {
         sdcv.register(ShowDetailFooterView.self, forSupplementaryViewOfKind: ShowDetailViewController.sectionFooterElementKind, withReuseIdentifier: ShowDetailFooterView.reuseIdentifier)
         sdcv.register(ShowDetailSeasonCollectionView.self, forCellWithReuseIdentifier: ShowDetailSeasonCollectionView.showDetailSeasonCellId)
         sdcv.register(ShowDetailTrailerCollectionView.self, forCellWithReuseIdentifier: ShowDetailTrailerCollectionView.showDetailTrailerCellId)
+        sdcv.register(ShowCastCollectionView.self, forCellWithReuseIdentifier: ShowCastCollectionView.showCastViewCellId)
+        sdcv.register(ShowDetailRelatedCollectionView.self, forCellWithReuseIdentifier: ShowDetailRelatedCollectionView.showDetailRelatedViewCellId)
         sdcv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         sdcv.backgroundColor = .white
         return sdcv
@@ -100,7 +103,7 @@ class ShowDetailViewController: UIViewController {
 
 extension ShowDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -116,9 +119,17 @@ extension ShowDetailViewController: UICollectionViewDataSource, UICollectionView
             cell.showId = item!.id
             //print("\(self.seasons)")
             return cell
+        } else if indexPath.row == 2 {
+            let cell = showDetailCollectionView.dequeueReusableCell(withReuseIdentifier: ShowCastCollectionView.showCastViewCellId, for: indexPath) as! ShowCastCollectionView
+            cell.showId = item!.id
+            return cell
+        } else if indexPath.row == 3 {
+            let cell = showDetailCollectionView.dequeueReusableCell(withReuseIdentifier: ShowDetailRelatedCollectionView.showDetailRelatedViewCellId, for: indexPath) as! ShowDetailRelatedCollectionView
+            cell.showId = item!.id
+            return cell
         } else {
             let cell = showDetailCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-            cell.backgroundColor = .white
+            cell.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.98, alpha:1.0)
             return cell
         }
     }
@@ -144,9 +155,9 @@ extension ShowDetailViewController: UICollectionViewDataSource, UICollectionView
         if indexPath.row == 0 {
             return .init(width: view.frame.width, height: 400)
         } else if indexPath.row == 1 {
-            return .init(width: view.frame.width, height: 400)
+            return .init(width: view.frame.width, height: 250)
         } else {
-            return .init(width: view.frame.width, height: 200)
+            return .init(width: view.frame.width, height: 250)
         }
     }
     

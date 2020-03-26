@@ -72,7 +72,7 @@ class ShowItemStore: ShowService {
         }.resume()
     }
     
-    public func fetchRelated(id: Int, successHandler: @escaping (_ response: ShowItem) -> Void, errorHandler: @escaping(_ error: Error) -> Void) {
+    public func fetchRelated(id: Int, successHandler: @escaping (_ response: ShowsItemResponse) -> Void, errorHandler: @escaping(_ error: Error) -> Void) {
         guard let url = URL(string: "\(baseAPIURL)/tv/\(id)/recommendations?api_key=\(apiKey)&language=en-US&page=1") else {
             handleError(errorHandler: errorHandler, error: ShowError.invalidEndpoint)
             return
@@ -96,9 +96,9 @@ class ShowItemStore: ShowService {
             }
             
             do {
-                let movie = try self.jsonDecoder.decode(ShowItem.self, from: data)
+                let shows = try self.jsonDecoder.decode(ShowsItemResponse.self, from: data)
                 DispatchQueue.main.async {
-                    successHandler(movie)
+                    successHandler(shows)
                 }
             } catch {
                 self.handleError(errorHandler: errorHandler, error: ShowError.serializationError)
@@ -134,6 +134,41 @@ class ShowItemStore: ShowService {
                 let movie = try self.jsonDecoder.decode(ShowItem.ShowVideoResponse.self, from: data)
                 DispatchQueue.main.async {
                     successHandler(movie)
+                }
+            } catch {
+                self.handleError(errorHandler: errorHandler, error: ShowError.serializationError)
+            }
+        }.resume()
+    
+    }
+    
+    public func fetchCast(id: Int, successHandler: @escaping (_ response: ShowItem.ShowCreditResponse) -> Void, errorHandler: @escaping(_ error: Error) -> Void) {
+        guard let url = URL(string: "\(baseAPIURL)/tv/\(id)/credits?api_key=\(apiKey)&language=en-US&page=1") else {
+            handleError(errorHandler: errorHandler, error: ShowError.invalidEndpoint)
+            return
+        }
+    
+        urlSession.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                self.handleError(errorHandler: errorHandler, error: ShowError.apiError)
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
+                self.handleError(errorHandler: errorHandler, error: ShowError.invalidResponse)
+
+                return
+            }
+            
+            guard let data = data else {
+                self.handleError(errorHandler: errorHandler, error: ShowError.noData)
+                return
+            }
+            
+            do {
+                let creditResponse = try self.jsonDecoder.decode(ShowItem.ShowCreditResponse.self, from: data)
+                DispatchQueue.main.async {
+                    successHandler(creditResponse)
                 }
             } catch {
                 self.handleError(errorHandler: errorHandler, error: ShowError.serializationError)

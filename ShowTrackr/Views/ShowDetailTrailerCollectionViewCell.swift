@@ -41,19 +41,6 @@ class ShowDetailTrailerCollectionViewCell: UICollectionViewCell {
         return fpv
     }()
     
-    var titleLabel: UILabel = {
-        let tl = UILabel()
-        tl.translatesAutoresizingMaskIntoConstraints = false
-        return tl
-    }()
-    
-    var overViewText: UITextView = {
-        let ovt = UITextView()
-        ovt.translatesAutoresizingMaskIntoConstraints = false
-        ovt.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.98, alpha:1.0)
-        return ovt
-    }()
-    
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
@@ -69,8 +56,6 @@ class ShowDetailTrailerCollectionViewCell: UICollectionViewCell {
         addSubview(container)
         container.addSubview(imageContainer)
         imageContainer.addSubview(featuredPhotoView)
-        container.addSubview(titleLabel)
-        container.addSubview(overViewText)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         featuredPhotoView.isUserInteractionEnabled = true
@@ -86,16 +71,6 @@ class ShowDetailTrailerCollectionViewCell: UICollectionViewCell {
             imageContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             imageContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             imageContainer.heightAnchor.constraint(equalToConstant: 200),
-            
-            titleLabel.topAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 20),
-            
-            overViewText.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            overViewText.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            overViewText.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            overViewText.bottomAnchor.constraint(equalTo: container.bottomAnchor),
             
             featuredPhotoView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
             featuredPhotoView.leadingAnchor.constraint(equalTo: imageContainer.leadingAnchor),

@@ -62,15 +62,15 @@ class ShowDetailTrailerCollectionViewCell: UICollectionViewCell {
         featuredPhotoView.addGestureRecognizer(tapGestureRecognizer)
         
         NSLayoutConstraint.activate([
-            container.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+            container.topAnchor.constraint(equalTo: topAnchor),
+            container.leadingAnchor.constraint(equalTo: leadingAnchor),
+            container.trailingAnchor.constraint(equalTo: trailingAnchor),
+            container.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             imageContainer.topAnchor.constraint(equalTo: container.topAnchor),
             imageContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             imageContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            imageContainer.heightAnchor.constraint(equalToConstant: 200),
+            imageContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor),
             
             featuredPhotoView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
             featuredPhotoView.leadingAnchor.constraint(equalTo: imageContainer.leadingAnchor),

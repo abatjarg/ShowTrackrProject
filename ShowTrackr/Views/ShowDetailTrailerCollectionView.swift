@@ -25,9 +25,26 @@ class ShowDetailTrailerCollectionView: UICollectionViewCell {
         }
     }
     
+    let sectionLabel: UILabel = {
+        let sl = UILabel()
+        sl.translatesAutoresizingMaskIntoConstraints = false
+        sl.adjustsFontForContentSizeCategory = true
+        sl.font = UIFont.preferredFont(forTextStyle: .title3)
+        sl.text = "Trailer"
+        return sl
+    }()
+    
+    let sectionSeperator: UIView = {
+        let seperator = UIView()
+        seperator.translatesAutoresizingMaskIntoConstraints = false
+        seperator.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
+        return seperator
+    }()
+    
     var trailerCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.sectionInset = .init(top: 10, left: 20, bottom: 10, right: 20)
         let scv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         scv.translatesAutoresizingMaskIntoConstraints = false
         scv.showsHorizontalScrollIndicator = false
@@ -48,13 +65,25 @@ class ShowDetailTrailerCollectionView: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        addSubview(sectionSeperator)
+        addSubview(sectionLabel)
         addSubview(trailerCollectionView)
         
         trailerCollectionView.delegate = self
         trailerCollectionView.dataSource = self
         
         NSLayoutConstraint.activate([
-            trailerCollectionView.topAnchor.constraint(equalTo: topAnchor),
+            sectionSeperator.topAnchor.constraint(equalTo: topAnchor),
+            sectionSeperator.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            sectionSeperator.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            sectionSeperator.heightAnchor.constraint(equalToConstant: 1.5),
+            
+            sectionLabel.topAnchor.constraint(equalTo: sectionSeperator.bottomAnchor, constant: 15),
+            sectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            sectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            sectionLabel.heightAnchor.constraint(equalToConstant: 15),
+            
+            trailerCollectionView.topAnchor.constraint(equalTo: sectionLabel.bottomAnchor),
             trailerCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             trailerCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             trailerCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
@@ -82,5 +111,8 @@ extension ShowDetailTrailerCollectionView: UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: frame.width - 50, height: 200)
     }
-    
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
 }

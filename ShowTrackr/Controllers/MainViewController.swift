@@ -96,7 +96,6 @@ extension MainViewController {
         group.enter()
         showService.fetchShows(from: Endpoint.airingToday, params: nil, successHandler: {[unowned self] (response) in
             self.featuredShows = response.results
-            print("\(response.results[0].seasons)")
             group.leave()
             }, errorHandler: {[unowned self] (error) in
                 group.leave()
@@ -288,7 +287,7 @@ extension MainViewController {
         
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(44))
+            heightDimension: .estimated(64))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
             elementKind: MainViewController.sectionHeaderElementKind,

@@ -26,6 +26,7 @@ class ShowDetailViewController: UIViewController {
     let showDetailCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let sdcv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        sdcv.showsVerticalScrollIndicator = false
         sdcv.translatesAutoresizingMaskIntoConstraints = false
         sdcv.register(ShowDetailHeaderView.self, forSupplementaryViewOfKind: ShowDetailViewController.sectionHeaderElementKind, withReuseIdentifier: ShowDetailHeaderView.reuseIdentifier)
         sdcv.register(ShowDetailFooterView.self, forSupplementaryViewOfKind: ShowDetailViewController.sectionFooterElementKind, withReuseIdentifier: ShowDetailFooterView.reuseIdentifier)
@@ -45,6 +46,7 @@ class ShowDetailViewController: UIViewController {
         view.backgroundColor = .white
         
         navigationItem.title = item?.name
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBarButtonPressed))
         
         view.addSubview(showDetailCollectionView)

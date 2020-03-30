@@ -18,9 +18,26 @@ class ShowDetailSeasonCollectionView: UICollectionViewCell {
         }
     }
     
+    let sectionLabel: UILabel = {
+        let sl = UILabel()
+        sl.translatesAutoresizingMaskIntoConstraints = false
+        sl.adjustsFontForContentSizeCategory = true
+        sl.font = UIFont.preferredFont(forTextStyle: .title3)
+        sl.text = "Season"
+        return sl
+    }()
+    
+    let sectionSeperator: UIView = {
+        let seperator = UIView()
+        seperator.translatesAutoresizingMaskIntoConstraints = false
+        seperator.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
+        return seperator
+    }()
+    
     var seasonCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.sectionInset = .init(top: 0, left: 20, bottom: 0, right: -20)
         let scv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         scv.translatesAutoresizingMaskIntoConstraints = false
         scv.register(ShowDetailSeasonCollectionViewCell.self, forCellWithReuseIdentifier: ShowDetailSeasonCollectionViewCell.showDetailSeasonCellId)
@@ -31,12 +48,24 @@ class ShowDetailSeasonCollectionView: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        addSubview(sectionSeperator)
+        addSubview(sectionLabel)
         addSubview(seasonCollectionView)
         
         seasonCollectionView.delegate = self
         seasonCollectionView.dataSource = self
         
         NSLayoutConstraint.activate([
+            sectionSeperator.topAnchor.constraint(equalTo: topAnchor),
+            sectionSeperator.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            sectionSeperator.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            sectionSeperator.heightAnchor.constraint(equalToConstant: 1.5),
+            
+            sectionLabel.topAnchor.constraint(equalTo: sectionSeperator.bottomAnchor, constant: 15),
+            sectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            sectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            sectionLabel.heightAnchor.constraint(equalToConstant: 15),
+            
             seasonCollectionView.topAnchor.constraint(equalTo: topAnchor),
             seasonCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             seasonCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -63,7 +92,7 @@ extension ShowDetailSeasonCollectionView: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: frame.width - 50, height: 400)
+        return .init(width: frame.width, height: 300)
     }
     
 }

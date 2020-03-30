@@ -23,6 +23,22 @@ class ShowCastCollectionView: UICollectionViewCell {
         }
     }
     
+    let sectionLabel: UILabel = {
+        let sl = UILabel()
+        sl.translatesAutoresizingMaskIntoConstraints = false
+        sl.adjustsFontForContentSizeCategory = true
+        sl.font = UIFont.preferredFont(forTextStyle: .title3)
+        sl.text = "Cast"
+        return sl
+    }()
+    
+    let sectionSeperator: UIView = {
+        let seperator = UIView()
+        seperator.translatesAutoresizingMaskIntoConstraints = false
+        seperator.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
+        return seperator
+    }()
+    
     var castCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -46,13 +62,26 @@ class ShowCastCollectionView: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        addSubview(sectionSeperator)
+        addSubview(sectionLabel)
         addSubview(castCollectionView)
         
         castCollectionView.delegate = self
         castCollectionView.dataSource = self
         
         NSLayoutConstraint.activate([
-            castCollectionView.topAnchor.constraint(equalTo: topAnchor),
+            
+            sectionSeperator.topAnchor.constraint(equalTo: topAnchor),
+            sectionSeperator.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            sectionSeperator.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            sectionSeperator.heightAnchor.constraint(equalToConstant: 1.5),
+            
+            sectionLabel.topAnchor.constraint(equalTo: sectionSeperator.bottomAnchor, constant: 15),
+            sectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            sectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            sectionLabel.heightAnchor.constraint(equalToConstant: 15),
+            
+            castCollectionView.topAnchor.constraint(equalTo: sectionLabel.bottomAnchor),
             castCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             castCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             castCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)

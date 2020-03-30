@@ -63,30 +63,25 @@ class ShowDetailSeasonCollectionViewCell: UICollectionViewCell {
         container.addSubview(overViewText)
         
         NSLayoutConstraint.activate([
-            container.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+            container.topAnchor.constraint(equalTo: topAnchor),
+            container.leadingAnchor.constraint(equalTo: leadingAnchor),
+            container.trailingAnchor.constraint(equalTo: trailingAnchor),
+            container.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             imageContainer.topAnchor.constraint(equalTo: container.topAnchor),
+            imageContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor),
             imageContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            imageContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            imageContainer.heightAnchor.constraint(equalToConstant: 200),
+            imageContainer.widthAnchor.constraint(equalTo: imageContainer.heightAnchor, multiplier: 3/5),
             
             featuredPhotoView.topAnchor.constraint(equalTo: imageContainer.topAnchor),
             featuredPhotoView.leadingAnchor.constraint(equalTo: imageContainer.leadingAnchor),
             featuredPhotoView.trailingAnchor.constraint(equalTo: imageContainer.trailingAnchor),
             featuredPhotoView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor),
             
-            titleLabel.topAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: container.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: imageContainer.trailingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 20),
-            
-            overViewText.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            overViewText.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            overViewText.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            overViewText.bottomAnchor.constraint(equalTo: container.bottomAnchor)
+            titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor)
         ])
     }
     

@@ -23,6 +23,22 @@ class ShowDetailRelatedCollectionView: UICollectionViewCell {
         }
     }
     
+    let sectionLabel: UILabel = {
+        let sl = UILabel()
+        sl.translatesAutoresizingMaskIntoConstraints = false
+        sl.adjustsFontForContentSizeCategory = true
+        sl.font = UIFont.preferredFont(forTextStyle: .title3)
+        sl.text = "Related"
+        return sl
+    }()
+    
+    let sectionSeperator: UIView = {
+        let seperator = UIView()
+        seperator.translatesAutoresizingMaskIntoConstraints = false
+        seperator.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
+        return seperator
+    }()
+    
     var relatedCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -47,13 +63,26 @@ class ShowDetailRelatedCollectionView: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        addSubview(sectionSeperator)
+        addSubview(sectionLabel)
         addSubview(relatedCollectionView)
 
         relatedCollectionView.delegate = self
         relatedCollectionView.dataSource = self
 
         NSLayoutConstraint.activate([
-            relatedCollectionView.topAnchor.constraint(equalTo: topAnchor),
+            
+            sectionSeperator.topAnchor.constraint(equalTo: topAnchor),
+            sectionSeperator.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            sectionSeperator.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            sectionSeperator.heightAnchor.constraint(equalToConstant: 1.5),
+            
+            sectionLabel.topAnchor.constraint(equalTo: sectionSeperator.bottomAnchor, constant: 15),
+            sectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            sectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            sectionLabel.heightAnchor.constraint(equalToConstant: 15),
+            
+            relatedCollectionView.topAnchor.constraint(equalTo: sectionLabel.bottomAnchor),
             relatedCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             relatedCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             relatedCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
@@ -81,8 +110,8 @@ extension ShowDetailRelatedCollectionView: UICollectionViewDelegate, UICollectio
         return .init(width: frame.width - 50, height: 200)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("\(relatedShows[indexPath.row].name)")
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        print("\(relatedShows[indexPath.row].name)")
+//    }
     
 }

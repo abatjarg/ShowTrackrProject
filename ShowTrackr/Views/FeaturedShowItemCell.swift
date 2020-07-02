@@ -32,7 +32,7 @@ class FeaturedMovieItemCell: UICollectionViewCell {
     var featuredPhotoView: UIImageView = {
         let fpv = UIImageView()
         fpv.translatesAutoresizingMaskIntoConstraints = false
-        fpv.layer.cornerRadius = 7
+        fpv.layer.cornerRadius = 4
         fpv.clipsToBounds = true
         return fpv
     }()
@@ -47,10 +47,10 @@ class FeaturedMovieItemCell: UICollectionViewCell {
         let view = UIView()
         view.backgroundColor = UIColor.white
         view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.cornerRadius = 7
+        view.layer.cornerRadius = 4
         view.layer.shadowOpacity = 0.5
-        view.layer.shadowRadius = 4
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 2
+        view.layer.shadowOffset = CGSize(width: 0, height: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

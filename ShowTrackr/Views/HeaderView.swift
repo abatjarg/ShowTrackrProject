@@ -18,14 +18,19 @@ class HeaderView: UICollectionReusableView {
         let sl = UILabel()
         sl.translatesAutoresizingMaskIntoConstraints = false
         sl.adjustsFontForContentSizeCategory = true
-        sl.font = UIFont.preferredFont(forTextStyle: .title3)
+        sl.font = UIFont.preferredFont(forTextStyle: .headline)
         return sl
     }()
     
     let viewAllButton: UIButton = {
         let val = UIButton(type: UIButton.ButtonType.roundedRect)
         val.translatesAutoresizingMaskIntoConstraints = false
-        val.setTitle("View All", for: .normal)
+        let myString = "SEE ALL"
+        let myAttribute = [
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 12)
+        ]
+        let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
+        val.setAttributedTitle(myAttrString, for: .normal)
         val.contentHorizontalAlignment = .trailing
         //val.addTarget(self, action: , for: .touchUpInside)
         return val

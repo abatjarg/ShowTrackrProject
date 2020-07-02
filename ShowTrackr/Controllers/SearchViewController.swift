@@ -64,7 +64,13 @@ class SearchViewController: UIViewController {
             .removeDuplicates()
             .sink { (str) in
                 self.showService.searchShows(query: str ?? "", params: nil, successHandler: {[unowned self] (response) in
-                    self.shows = response.results
+                    self.shows.removeAll()
+                    for result in response.results {
+                        if (result.posterURL != nil) {
+                            self.shows.append(result)
+                        }
+                    }
+                    print("Result length: \(response.results.count)")
                     self.searchCollectionView.reloadData()
                     }, errorHandler: {[unowned self] (error) in
                         print("\(error.localizedDescription)")
@@ -92,7 +98,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SearchCollectionViewCell
         if let posterUrl = self.shows[indexPath.row].posterURL {
             cell.imageView.kf.setImage(with: posterUrl)
-        }
+        } 
         return cell
     }
     

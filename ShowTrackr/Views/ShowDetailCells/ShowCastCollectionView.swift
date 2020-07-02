@@ -81,7 +81,7 @@ class ShowCastCollectionView: UICollectionViewCell {
             sectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             sectionLabel.heightAnchor.constraint(equalToConstant: 15),
             
-            castCollectionView.topAnchor.constraint(equalTo: sectionLabel.bottomAnchor),
+            castCollectionView.topAnchor.constraint(equalTo: sectionLabel.bottomAnchor, constant: 10),
             castCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             castCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             castCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)

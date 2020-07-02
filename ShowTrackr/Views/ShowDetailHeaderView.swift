@@ -88,11 +88,11 @@ class ShowDetailHeaderView: UICollectionReusableView {
             
             imageContainer.topAnchor.constraint(equalTo: containerView.topAnchor),
             imageContainer.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            imageContainer.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            imageContainer.widthAnchor.constraint(equalToConstant: 140),
+            imageContainer.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            imageContainer.heightAnchor.constraint(equalToConstant: 200),
             
-            overViewText.topAnchor.constraint(equalTo: containerView.topAnchor),
-            overViewText.leadingAnchor.constraint(equalTo: imageContainer.trailingAnchor, constant: 20),
+            overViewText.topAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: 20),
+            overViewText.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             overViewText.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             overViewText.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             

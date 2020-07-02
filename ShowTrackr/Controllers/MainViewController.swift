@@ -253,13 +253,13 @@ extension MainViewController {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .absolute(160),
-            heightDimension: .absolute(240))
+            heightDimension: .absolute(220))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 1)
-        group.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10)
         
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(44))
+            heightDimension: .estimated(64))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
             elementKind: MainViewController.sectionHeaderElementKind,
@@ -281,9 +281,9 @@ extension MainViewController {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .absolute(160),
-            heightDimension: .absolute(240))
+            heightDimension: .absolute(220))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 1)
-        group.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 20, trailing: 10)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10)
         
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),

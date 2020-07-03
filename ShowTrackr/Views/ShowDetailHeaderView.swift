@@ -60,6 +60,12 @@ class ShowDetailHeaderView: UICollectionReusableView {
         return ovt
     }()
     
+    var overViewInfoText: UITextView = {
+        let ovft = UITextView()
+        ovft.translatesAutoresizingMaskIntoConstraints = false
+        return ovft
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

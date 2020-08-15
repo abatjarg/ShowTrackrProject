@@ -16,7 +16,6 @@
 		4D29AADF240B74CD00028B8F /* ShowTrackrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D29AADE240B74CD00028B8F /* ShowTrackrTests.swift */; };
 		4D29AAEA240B74CD00028B8F /* ShowTrackrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D29AAE9240B74CD00028B8F /* ShowTrackrUITests.swift */; };
 		4D29AAF8240B751D00028B8F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D29AAF7240B751D00028B8F /* MainViewController.swift */; };
-		4D29AB00240C337400028B8F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4D29AAFF240C337400028B8F /* Kingfisher */; };
 		4D29AB05240C33FF00028B8F /* ShowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D29AB01240C33FE00028B8F /* ShowService.swift */; };
 		4D29AB06240C33FF00028B8F /* ShowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D29AB02240C33FE00028B8F /* ShowItem.swift */; };
 		4D29AB07240C33FF00028B8F /* ShowItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D29AB03240C33FF00028B8F /* ShowItemStore.swift */; };
@@ -28,6 +27,7 @@
 		4D29AB16240C344B00028B8F /* MainItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D29AB0F240C344B00028B8F /* MainItemCell.swift */; };
 		4D29AB18240C34CE00028B8F /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D29AB17240C34CE00028B8F /* CustomTabBarController.swift */; };
 		4D29AB1A240C51F100028B8F /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D29AB19240C51F100028B8F /* ShowDetailViewController.swift */; };
+		4DA495BC24BEA957005ADA90 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4DA495BB24BEA957005ADA90 /* Kingfisher */; };
 		4DBDDC0B240C58AA00542046 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC0A240C58AA00542046 /* SearchViewController.swift */; };
 		4DBDDC0D240C866400542046 /* ViewAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC0C240C866400542046 /* ViewAllViewController.swift */; };
 		4DBDDC0F240C882100542046 /* SavedShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDDC0E240C882100542046 /* SavedShowsViewController.swift */; };
@@ -119,7 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D29AB00240C337400028B8F /* Kingfisher in Frameworks */,
+				4DA495BC24BEA957005ADA90 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +147,7 @@
 				4D29AADD240B74CD00028B8F /* ShowTrackrTests */,
 				4D29AAE8240B74CD00028B8F /* ShowTrackrUITests */,
 				4D29AAC2240B74CC00028B8F /* Products */,
+				4DA495BA24BEA957005ADA90 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -256,6 +257,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		4DA495BA24BEA957005ADA90 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4DD83B26247B7E28003D1BBB /* ShowDetailCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,7 +296,7 @@
 			);
 			name = ShowTrackr;
 			packageProductDependencies = (
-				4D29AAFF240C337400028B8F /* Kingfisher */,
+				4DA495BB24BEA957005ADA90 /* Kingfisher */,
 			);
 			productName = ShowTrackr;
 			productReference = 4D29AAC1240B74CC00028B8F /* ShowTrackr.app */;
@@ -783,7 +791,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4D29AAFF240C337400028B8F /* Kingfisher */ = {
+		4DA495BB24BEA957005ADA90 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4D29AAFE240C337400028B8F /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;

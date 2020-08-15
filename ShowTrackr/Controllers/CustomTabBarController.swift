@@ -32,12 +32,12 @@ class CustomTabBarController: UITabBarController {
         savedShowsNavController.tabBarItem.title = "Favorite"
         savedShowsNavController.tabBarItem.image = UIImage(imageLiteralResourceName: "favorite")
         
-//        let accountViewController = AccountViewController()
-//        let accountNavController = UINavigationController(rootViewController: accountViewController)
-//        accountNavController.tabBarItem.title = "Account"
-//        accountNavController.tabBarItem.image = UIImage(imageLiteralResourceName: "account")
+        let accountViewController = AccountViewController()
+        let accountNavController = UINavigationController(rootViewController: accountViewController)
+        accountNavController.tabBarItem.title = "Account"
+        accountNavController.tabBarItem.image = UIImage(imageLiteralResourceName: "account")
         
-        viewControllers = [mainNavController, searchNavController, savedShowsNavController]
+        viewControllers = [mainNavController, searchNavController, savedShowsNavController, accountViewController]
     }
 
 }
